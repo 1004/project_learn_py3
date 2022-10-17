@@ -25,7 +25,7 @@ count2 = 1
 while count1 <= 9:
     count2 = 1
     while count2 <= count1:
-        print(f"{count2}*{count1}={count1 * count2} ")
+        print(f"{count2}*{count1}={count1 * count2} ",end='')  # end 去掉默认的换行符 ，也可以自定义最后一个字符例如*
         count2 += 1
     count1 += 1
     print("\n")
