@@ -91,3 +91,16 @@ print(map1)
 # 循环
 for i in map1:
     print(i, map1[i])
+
+for k in map1.values():
+    print(k)
+
+for v in map1.keys():
+    print(v)
+
+map1.update({"k4": 999})
+print(map1.get("k4"))  # 存在 获取值
+print(map1.get("k5"))  # key 不存在 不报错
+
+map1.setdefault("k4", "kkk")
+print(map1.get("k4"))
