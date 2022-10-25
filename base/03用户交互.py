@@ -12,6 +12,8 @@ print(type(mAge))
 
 """
 格式化输出
+f"xxx{xx}"  // f 填充字符串变量
+r"{}".format(xx)  // r 保证字符不被转义
 """
 
 # 按照位置对应

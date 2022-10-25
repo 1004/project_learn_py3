@@ -52,3 +52,7 @@ else:
 
 # find 寻找字符串 更方便
 print("hello".find("h"))
+
+# 编码/解码
+print("圣诞快乐".encode("utf-8"))
+print("圣诞快乐".encode("utf-8").decode("utf-8"))
