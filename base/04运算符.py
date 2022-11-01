@@ -72,11 +72,43 @@ elif 18 > 8:
 else:
     print("无")
 
-score = input("请输入成绩: ")
-score = int(score)
-if score < 60:
-    print("不及格")
-elif score < 80:
-    print("优秀")
-else:
-    print("牛逼")
+# score = input("请输入成绩: ")
+# score = int(score)
+# if score < 60:
+#     print("不及格")
+# elif score < 80:
+#     print("优秀")
+# else:
+#     print("牛逼")
+
+"""
+三元式
+
+条件成立的时候返回值  if 条件  else 条件不成立的时候返回值
+"""
+
+res = x if x > y else y
+print(res)
+
+"""
+列表生成器
+[expre for name in list if name.endwith("xx")]
+
+[expre for name in list]
+"""
+
+aa = "xkyKKKKWIOJDSIOFJLKSDJFLKSDJFLKSDJ"
+
+aa_new = [i.lower() for i in aa]
+print(aa_new)
+
+"""
+字典生成式
+"""
+
+bb = {i: None for i in aa}
+print(bb)
+
+items = [('aa', 'bb'), ('cc', 'dd')]
+
+print({k: v for k, v in items})
