@@ -182,7 +182,35 @@ def fun8(**kwargs):  # kwargs 可变参数，k=v 聚合成字典
 fun7(1, 2, 3, 4, 5, 6)
 
 fun5(*[4, 4])  # 打散列表的内容 4，4
-fun7(**{'x': 1, 'y': 2, 'k2': 2})  # x=1 ,y=2,k2=2 在传值
+# fun7(**{'x': 1, 'y': 2, 'k2': 2})  # x=1 ,y=2,k2=2 在传值
 
 """
+匿名函数
+lambda
 """
+lambda x, y: x + y  # 定义函数
+
+res = (lambda x, y: x + y)(1, 2)
+print(res)
+
+res = max([12, 3, 4, 5])
+print(res)
+
+p = {
+    "k1": 2323,
+    "k2": 233
+}
+
+res = max(p, key=lambda k: p[k])  # 匿名函数 作为排序策略，进行max函数内部进行调用，调用后返回值作为排序依据
+print(res)
+
+# sorted
+print(sorted(p, key=lambda k: p[k]))  # 升序排序 也是匿名函数作为 回调策略
+
+"""
+函数类型提示
+"""
+
+
+def showName(name: str, age: int) -> int:  # 有点类似kotlin 了， 但是kotlin是强限制的  《: 跟的是提示信息》
+    return 10
