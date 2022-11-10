@@ -110,6 +110,7 @@ map4 = {
     "2": "error",
     "3": "failed"
 }
+print(map4['1'],map4.get('1'))
 # 循环
 for i, v in map4.items():
     print(f"{i}-{v}", end=' ')
