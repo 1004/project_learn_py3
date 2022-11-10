@@ -104,3 +104,12 @@ print(map1.get("k5"))  # key 不存在 不报错
 
 map1.setdefault("k4", "kkk")
 print(map1.get("k4"))
+
+map4 = {
+    "1": "ok",
+    "2": "error",
+    "3": "failed"
+}
+# 循环
+for i, v in map4.items():
+    print(f"{i}-{v}", end=' ')
