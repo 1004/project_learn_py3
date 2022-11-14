@@ -8,6 +8,21 @@
 4. 对象访问属性，先从对象找，找不动在去类种找
 5. 类种定义了 通用的一些属性，如果改变类的属性，则所有对象中访问的都变化，是一份对象
 6. 构造函数：__init(self)__
+
+绑定给对象： 对象调用， 传参是对象
+    def h(self)
+
+绑定给类： 类调用, 传参是类
+    @classmethod
+    def classM(cls)
+
+非绑定方法：
+    @staticmethod
+    def id():
+
+
+
+
 """
 
 
@@ -29,12 +44,25 @@ class Teacher:
     def set_inner(self, outer):
         self.__inner = outer
 
+    # 类方法
+    @classmethod
+    def factory(cls):
+        return cls('hello')
+
+    @staticmethod
+    def generate_id():
+        import uuid
+        return uuid.uuid4()
+
 
 print("========对象通用-->类相关--start===========")
 print(Teacher.__dict__)  # 所有的都存储到这里
 print(Teacher.tea_name)  # 类种通用的值，已改全改
 print(Teacher.teach)
 Teacher.age = 11  # 可以在类种扩展
+
+print(Teacher.generate_id())
+t1 = Teacher.factory()
 
 print("========对象通用-->类相关--end===========")
 
