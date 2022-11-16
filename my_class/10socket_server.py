@@ -1,4 +1,5 @@
 import socket
+import subprocess
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 模块中的socket类创建对象
 
@@ -16,7 +17,19 @@ while True:
                 break
             data_str = data.decode('utf-8')
             print("客户发来内容了:", data_str)
-            coon.send(f"我来自服务器:{data_str}".encode('utf-8'))  # 在发回去  都是字节
+            result = subprocess.Popen(
+                data_str,
+                shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            )
+            # coon.send(f"我来自服务器:{data_str}".encode('utf-8'))  # 在发回去  都是字节
+            success = result.stdout.read()
+            failed = result.stderr.read()
+            if len(success) != 0:
+                coon.send(success)
+            elif len(failed) != 0:
+                coon.send(failed)
+            else:
+                coon.send(f"命令错误：{data_str}".encode('utf-8'))
         except Exception as e:
             print(e)
             break
