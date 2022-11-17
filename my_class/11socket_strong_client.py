@@ -9,7 +9,7 @@ import json
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-client.connect(('127.0.0.1', 8080))
+client.connect(('101.42.223.101', 8250))
 
 print("链接服务器成功")
 
