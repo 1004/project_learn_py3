@@ -167,3 +167,82 @@ ls > /dev/null  # 可以不输出到显示器
 
 
 #b.txt < $?
+
+# export 定义的变量 可以在子脚本中使用
+export DEBUG=true
+
+echo "first $DEBUG"
+sh two.sh
+
+
+#set -e  在脚本执行失败，立刻退出，也就是返回了非0
+
+echo $1  # 获取脚本的入参
+echo $2
+
+echo $#  # 入参个数
+
+
+function testLocal() {
+    local TEST1 TEST2  # 定义2个局部变量
+    TEST1=1
+    TEST2=2
+}
+
+testLocal
+
+function testWhile() {
+    local ANSWER
+    export FLAVOR=
+    while [[ -z $FLAVOR ]]; do
+        echo -n "选一个吧"
+        if [[ -z "$1" ]]; then  # 如果入参为空
+            read ANSWER  #  从标准输入里读取到ANSWER
+        else
+            ANSWER=$1  #将入参给到ANSWER
+        fi
+        case $ANSWER in   # shell case 语法
+        "")
+          export FLAVOR=1
+          ;;
+        2)
+          export FLAVOR=2
+          echo '你选择了2'
+          ;;
+        3)
+          export FLAVOR=3
+          ;;
+        *)
+          echo 'you error'
+          ;;
+        esac
+        if [ -n "$1" ]; then  # -n 当不是0的时候则返回true
+            break
+        fi
+    done
+
+}
+
+
+testWhile 2
+
+
+function testNet() {
+  $(curl --request GET -sL \
+       --url 'http://test3.api.ke.com/common/getversion.json?source=tab'\
+       --output './a.txt')
+  content=$(curl "http://test3.api.ke.com/common/getversion.json?source=tab")
+
+#  echo $content
+  c1=$(echo "$content" | jq ".errno")   #| 为管道符号，顾名思义，其作用为传输。 awk 为分隔符
+  echo $c1
+  a1=$(awk -F "," '{print $1$2}' <<< "$content")  #以","为分隔符打印/etc/passwd文件的第一例内容  , 将content的内容进行逗号分隔，然后读取第二行给到a1,也可以同时读取多行$1$2 表示第一个行和第二行
+#  echo $a1
+#  echo $(jq . "$content".errno)
+}
+
+debug(){
+  echo "[[DEBUG:  $1]]"
+}
+
+testNet
