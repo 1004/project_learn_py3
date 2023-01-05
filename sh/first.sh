@@ -245,4 +245,7 @@ debug(){
   echo "[[DEBUG:  $1]]"
 }
 
+#curl -F "file=@1.png" http://localhost/upload  上传文件
+
+
 testNet
