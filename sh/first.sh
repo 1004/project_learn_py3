@@ -239,6 +239,7 @@ function testNet() {
   a1=$(awk -F "," '{print $1$2}' <<< "$content")  #以","为分隔符打印/etc/passwd文件的第一例内容  , 将content的内容进行逗号分隔，然后读取第二行给到a1,也可以同时读取多行$1$2 表示第一个行和第二行
 #  echo $a1
 #  echo $(jq . "$content".errno)
+
 }
 
 debug(){
