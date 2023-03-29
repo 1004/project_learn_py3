@@ -39,19 +39,19 @@ print(",".join("war"))  # 进行分隔
 print("hello".replace("e", "E"))  # 字符串替换
 print("213233".isdigit())  # 字符串是否为纯数字
 
-in_age = input("请输入成绩").strip()
+# in_age = input("请输入成绩").strip()
 
-if in_age.isdigit():  # 数字判断
-    age = int(in_age)
-    if age > 60:
-        print("合格")
-    else:
-        print("不合格")
-else:
-    print("不要乱输入")
+# if in_age.isdigit():  # 数字判断
+#     age = int(in_age)
+#     if age > 60:
+#         print("合格")
+#     else:
+#         print("不合格")
+# else:
+#     print("不要乱输入")
 
 # find 寻找字符串 更方便
-print("hello".find("h"))
+print("ello".find("h"))
 
 # 编码/解码
 print("圣诞快乐".encode("utf-8"))
